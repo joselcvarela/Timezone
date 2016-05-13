@@ -1,0 +1,48 @@
+/* Empty. Add your own CSS if you like */
+@import url('http://fonts.googleapis.com/css?family=Syncopate');
+
+.two-col {
+  flex: 1 1 calc(100% / 2);
+  padding: 5%;
+  margin: 0 2% 0 2%;
+}
+
+.big-plus {
+  font-size: 10vh;
+}
+
+@media only screen and (min-width: 600px) {
+  .two-col {
+    flex: 1 1 calc(100% / 3);
+  }
+  .big-plus {
+    font-size: 20vh;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .two-col {
+    flex: 1 1 calc(100% / 4);
+  }
+}
+
+
+.float-left {
+  float: left;
+}
+
+.big-plus:hover {
+  color: #387ef5;
+  cursor: pointer;
+}
+
+.flexify {
+  width: 100%;
+  display: flex;
+  flex: 1;
+}
+
+.add-clock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
