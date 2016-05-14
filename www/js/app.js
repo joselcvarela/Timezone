@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ds.clock', 'ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['angular-country-timezone-picker', 'ds.clock', 'ionic', 'starter.directives', 'starter.controllers', 'starter.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -40,12 +40,13 @@ angular.module('starter', ['ds.clock', 'ionic', 'starter.controllers', 'starter.
 
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
-    url: '/dash',
+  .state('tab.clocks', {
+    url: '/clocks',
     views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
+      'clocks': {
+        templateUrl: 'templates/clocks.html',
+        controller: 'ClocksCtrl',
+        controllerAs: 'vm'
       }
     }
   })
@@ -80,6 +81,6 @@ angular.module('starter', ['ds.clock', 'ionic', 'starter.controllers', 'starter.
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/clocks');
 
 });

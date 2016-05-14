@@ -25,7 +25,6 @@
   }
 }
 
-
 .float-left {
   float: left;
 }
@@ -45,4 +44,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.subflexify {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.subflexify-item {
 }
