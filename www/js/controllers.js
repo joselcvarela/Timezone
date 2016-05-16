@@ -3,6 +3,19 @@ angular.module('starter.controllers', [])
 .controller('cardTimezoneCtrl', function($scope) {
 })
 
+.controller('ResultsCtrl', function($rootScope, $scope, MyTimezones) {
+  let vm = this;
+  vm.timezones = [];
+  $rootScope.$on('mytzEv', function(ev, tzs){
+    debugger;
+    vm.timezones = tzs;
+  })
+})
+
+.controller('resultTimezoneCtrl', function($rootScope, $scope, MyTimezones) {
+
+})
+
 .controller('ClocksCtrl', function($scope, MyTimezones) {
   const vm = this;
 
@@ -14,13 +27,29 @@ angular.module('starter.controllers', [])
     return MyTimezones.all();
   }
 
-  vm.addTimezone = function(country, tz, startTime, endTime) {
-    let coiso = MyTimezones.add({country: country, timezone: tz, start: startTime, end: endTime});
-    console.log(coiso);
+  vm.buildStates = function(startTime, endTime, threshold=2){
+    let states = [];
+    for (var i = 0; i < 24; i++) {
+      if(i >= startTime && i < endTime){
+        states[i] = 'P';
+      } else if(i >= endTime && i< endTime + threshold) {
+        states[i] = 'O';
+      } else {
+        states[i] = 'B';
+      }
+    }
+    return states;
   }
-})
 
-.controller('ChatsCtrl', function($scope) {
+  vm.addTimezone = function(country, tz, startTime, endTime) {
+    MyTimezones.add({
+      country: country,
+      timezone: tz,
+      start: startTime,
+      end: endTime,
+      states: vm.buildStates(startTime, endTime)
+    });
+  }
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams) {

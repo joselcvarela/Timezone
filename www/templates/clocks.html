@@ -3,7 +3,7 @@
     <div class="flexify">
       <card-timezone class="card two-col float-left flexify-item"></card-timezone>
       
-      <card-timezone class="card two-col float-left flexify-item" ng-repeat="clock in vm.allClocks()" offset="clock.offset"></card-timezone>
+      <card-timezone class="card two-col float-left flexify-item" ng-repeat="clock in vm.allClocks()" timezone="clock.timezone" offset="clock.offset"></card-timezone>
 
       <div class="card two-col add-clock flexify-item subflexify">
 

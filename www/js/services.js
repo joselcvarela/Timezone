@@ -1,6 +1,6 @@
  angular.module('starter.services', [])
 
-.service('MyTimezones', function($http) {
+.service('MyTimezones', function($rootScope, $http) {
   
   let vm = this;
 
@@ -33,6 +33,7 @@
     let offset = vm.searchOffset(vm.offsets, tz.timezone);
     tz.offset = offset;
     vm.mytz.push(tz);
+    $rootScope.$emit('mytzEv', vm.mytz);
     return tz;
   }
 

@@ -51,12 +51,13 @@ angular.module('starter', ['angular-country-timezone-picker', 'ds.clock', 'ionic
     }
   })
 
-  .state('tab.chats', {
-      url: '/chats',
+  .state('tab.results', {
+      url: '/results',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
+        'tab-results': {
+          templateUrl: 'templates/results.html',
+          controller: 'ResultsCtrl',
+          controllerAs: 'vm'
         }
       }
     })

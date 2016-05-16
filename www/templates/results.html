@@ -1,0 +1,10 @@
+<ion-view view-title="Results">
+  <ion-content>
+    <ion-list>
+      <table ng-repeat="tz in vm.timezones">
+        <tr ng-repeat="state in tz.states">
+          <td>{{state}}</td>
+        </tr>
+      </table>
+  </ion-content>
+</ion-view>
