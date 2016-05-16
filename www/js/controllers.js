@@ -4,15 +4,9 @@ angular.module('starter.controllers', [])
 })
 
 .controller('ResultsCtrl', function($rootScope, $scope, MyTimezones) {
-  let vm = this;
-  vm.timezones = [];
-  $rootScope.$on('mytzEv', function(ev, tzs){
-    debugger;
-    vm.timezones = tzs;
-  })
-})
 
-.controller('resultTimezoneCtrl', function($rootScope, $scope, MyTimezones) {
+  const vm = this;
+  vm.timezones = MyTimezones.all();
 
 })
 
@@ -40,6 +34,7 @@ angular.module('starter.controllers', [])
     }
     return states;
   }
+
 
   vm.addTimezone = function(country, tz, startTime, endTime) {
     MyTimezones.add({

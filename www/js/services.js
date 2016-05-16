@@ -27,13 +27,31 @@
     }
   }
 
+  vm.orderStates = function(states, offset) {
+    var ordStates = [];
+    for (let i = 0; i < 23; i++) {
+      ordStates[vm.calculate(offset,i)] =  states[i];
+    }
+    return ordStates;
+  }
+
+  vm.calculate = function(gmt, i){
+    if((i+gmt)<0) {
+      return 24-(-gmt-i);
+    } else if ((i+gmt)>23) {
+      return gmt-(24-i);
+    } else {
+      return gmt+i;
+    }
+  }
+
 
   vm.add = function(tz) {
     // object: GMT, Job Schedule, ISO 3861 (PT,EN, FR ...)
     let offset = vm.searchOffset(vm.offsets, tz.timezone);
     tz.offset = offset;
+    tz.states = vm.orderStates(tz.states, offset);
     vm.mytz.push(tz);
-    $rootScope.$emit('mytzEv', vm.mytz);
     return tz;
   }
 

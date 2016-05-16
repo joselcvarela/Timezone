@@ -1,10 +1,8 @@
 <ion-view view-title="Results">
   <ion-content>
     <ion-list>
-      <table ng-repeat="tz in vm.timezones">
-        <tr ng-repeat="state in tz.states">
-          <td>{{state}}</td>
-        </tr>
+      <table class="results" ng-repeat="tz in vm.timezones">
+        <tr ng-repeat="coiso in tz.states track by $index"><td>{{coiso}}</td></tr>
       </table>
   </ion-content>
 </ion-view>

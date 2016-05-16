@@ -10,12 +10,4 @@ angular.module('starter.directives', [])
 		templateUrl: 'templates/cardTimezone.directive.html',
 		controller: 'cardTimezoneCtrl'
 	}
-})
-.directive('resultTimezone', function() {
-  return {
-    scope: {},
-    restrict: 'E',
-    templateUrl: 'templates/resultTimezone.directive.html',
-    controller: 'resultTimezoneCtrl'
-  }
-})
+});
