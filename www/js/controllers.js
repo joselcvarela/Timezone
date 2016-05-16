@@ -3,15 +3,20 @@ angular.module('starter.controllers', [])
 .controller('cardTimezoneCtrl', function($scope) {
 })
 
-.controller('ClocksCtrl', function($scope, $http, MyTimezones) {
+.controller('ClocksCtrl', function($scope, MyTimezones) {
   const vm = this;
 
-  $http.post('//freegeoip.net/json/')
-    .then(function(resp){$scope.countryModel = resp});
+  $scope.startTime = 9;
+  $scope.endTime = 18;
 
-  vm.addTimezone = function(country, tz) {
-    MyTimezones.add({country: country, timezone: tz});
-    console.log(country, tz);
+
+  vm.allClocks = function() {
+    return MyTimezones.all();
+  }
+
+  vm.addTimezone = function(country, tz, startTime, endTime) {
+    let coiso = MyTimezones.add({country: country, timezone: tz, start: startTime, end: endTime});
+    console.log(coiso);
   }
 })
 
