@@ -36,9 +36,8 @@ angular.module('starter.controllers', [])
   }
 
 
-  vm.addTimezone = function(country, tz, startTime, endTime) {
+  vm.addTimezone = function(tz, startTime, endTime) {
     MyTimezones.add({
-      country: country,
       timezone: tz,
       start: startTime,
       end: endTime,

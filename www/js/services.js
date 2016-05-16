@@ -4,7 +4,7 @@
   
   let vm = this;
 
-  vm.mytz = [],
+  vm.mytz = [];
   vm.offsets = [];
 
   vm.url = '/data/timezones.json';
@@ -52,6 +52,7 @@
     tz.offset = offset;
     tz.states = vm.orderStates(tz.states, offset);
     vm.mytz.push(tz);
+
     return tz;
   }
 

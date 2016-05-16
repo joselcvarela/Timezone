@@ -56,6 +56,18 @@
 .subflexify-item {
 }
 
-.results {
+.timezone-wrapper {
   float: left;
+}
+
+.bad {
+  background-color: #ff0000;
+}
+
+.ok {
+  background-color: #ffd11a;
+}
+
+.perfect {
+  background-color: #39e600;
 }

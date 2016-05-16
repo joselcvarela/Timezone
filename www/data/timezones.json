@@ -943,7 +943,8 @@
     "isdst": false,
     "text": "(UTC+05:30) Chennai, Kolkata, Mumbai, New Delhi",
     "utc": [
-      "Asia/Calcutta"
+      "Asia/Calcutta",
+      "Asia/Kolkata"
     ]
   },
   {
