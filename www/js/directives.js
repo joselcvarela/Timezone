@@ -10,4 +10,16 @@ angular.module('starter.directives', [])
 		templateUrl: 'templates/cardTimezone.directive.html',
 		controller: 'cardTimezoneCtrl'
 	}
-});
+})
+
+.directive('timezoneWrapper', function(MyTimezones){
+  return {
+    scope: {
+      actual: '='
+    },
+    templateUrl: 'templates/timezoneWrapper.directive.html',
+    controller: 'timezoneWrapperCtrl',
+    controllerAs: 'vm',
+    restrict: 'E'
+  }
+})

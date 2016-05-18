@@ -1,0 +1,7 @@
+<ui-select ng-model="selectedValue" theme="selectize" style="width: 300px;">
+  <ui-select-match placeholder="Select a country...">{{$select.selected.name}}</ui-select-match>
+  <ui-select-choices repeat="country in countries | filter: $select.search" value="{{$select.selected.value}}">
+    <div ng-bind-html="country.name | highlight: $select.search"></div>
+    <small ng-bind-html="country.code | highlight: $select.search"></small>
+  </ui-select-choices>
+</ui-select>

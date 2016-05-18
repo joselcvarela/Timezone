@@ -1,14 +1,5 @@
 <ion-view view-title="Results">
-  <ion-content>
-    <ion-list>
-      <div class="content-wrapper">
-        <ul class="timezone-wrapper" ng-repeat="tz in vm.timezones">
-          <li 
-            ng-repeat="state in tz.states track by $index" 
-            ng-class="{bad: state == 'B', perfect: state == 'P' , ok: state == 'O'}">
-              {{state}}
-          </li>
-        </ul>
-      </div>
+  <ion-content ng-repeat="tz in vm.timezones" ng-style="{width: vm.divisor + '%', left: $index * vm.divisor + '%'}">
+      <timezone-wrapper actual="tz"></timezone-wrapper>
   </ion-content>
 </ion-view>

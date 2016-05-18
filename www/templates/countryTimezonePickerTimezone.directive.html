@@ -1,0 +1,7 @@
+<ui-select ng-model="selectedValue" theme="selectize" style="width: 300px;">
+  <ui-select-match placeholder="Select a timezone...">{{$select.selected.name}}</ui-select-match>
+  <ui-select-choices repeat="timezone in timezones | filter: $select.search" value="{{$select.selected.value}}">
+    <div ng-bind-html="timezone.name | highlight: $select.search"></div>
+  </ui-select-choices>
+</ui-select>
+

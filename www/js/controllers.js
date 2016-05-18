@@ -3,11 +3,45 @@ angular.module('starter.controllers', [])
 .controller('cardTimezoneCtrl', function($scope) {
 })
 
-.controller('ResultsCtrl', function($rootScope, $scope, MyTimezones) {
+.controller('timezoneWrapperCtrl', function($scope) {
+  const vm = this;
+  vm.setClass = setClass;
+  vm.today = new Date();
+  vm.hours = hours;
 
+  function setClass(state, index){
+    let cssClass = ['bar'];
+    switch(state){
+      case 'available':
+        cssClass.push('bar-balanced');
+      break;
+      case 'overtime':
+        cssClass.push('bar-energized');
+      break;
+      case 'unavailable':
+        cssClass.push('bar-assertive');
+      break;
+    }
+    if(vm.today.getHours() == index){
+      cssClass.push('activeHour');
+    }
+    return cssClass;
+  }
+
+  function hours(idx, offset){
+    return idx + (vm.today.getTimezoneOffset() / 60) + offset;
+  }
+
+})
+
+.controller('ResultsCtrl', function($rootScope, $scope, MyTimezones) {
   const vm = this;
   vm.timezones = MyTimezones.all();
-
+  vm.divisor = 100 / vm.timezones.length;
+  $rootScope.$on('tzAddedEv', function(ev, data){
+    vm.timezones = MyTimezones.all();
+    vm.divisor = 100 / vm.timezones.length;
+  })
 })
 
 .controller('ClocksCtrl', function($scope, MyTimezones) {
@@ -21,27 +55,11 @@ angular.module('starter.controllers', [])
     return MyTimezones.all();
   }
 
-  vm.buildStates = function(startTime, endTime, threshold=2){
-    let states = [];
-    for (var i = 0; i < 24; i++) {
-      if(i >= startTime && i < endTime){
-        states[i] = 'P';
-      } else if(i >= endTime && i< endTime + threshold) {
-        states[i] = 'O';
-      } else {
-        states[i] = 'B';
-      }
-    }
-    return states;
-  }
-
-
   vm.addTimezone = function(tz, startTime, endTime) {
     MyTimezones.add({
       timezone: tz,
       start: startTime,
-      end: endTime,
-      states: vm.buildStates(startTime, endTime)
+      end: endTime
     });
   }
 })

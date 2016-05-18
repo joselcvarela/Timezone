@@ -1,14 +1,13 @@
 //https://github.com/adcuz/angular-country-timezone-picker
 'use strict';
 
-angular.module('angular-country-timezone-picker', [])
+angular.module('country.timezone.picker', [])
         
 .directive('countryTimezonePickerCountries', function(countryTimezonePickerService) {
     
     return {
-        template: '<select ng-model="selectedValue" ng-options="country.code as country.name for country in countries" required="isRequired"></select>',
+        templateUrl: 'templates/countryTimezonePickerCountries.directive.html',
         restrict: 'E',
-        replace: true,
         scope: {
             selectedValue: '=countryModel',
             isRequired: '=?'
@@ -23,9 +22,8 @@ angular.module('angular-country-timezone-picker', [])
 .directive('countryTimezonePickerTimezone', function(countryTimezonePickerService, $filter) {
     
     return {
-        template: '<select ng-model="selectedValue" ng-options="timezone.name as timezone.displayName for timezone in timezones" required="isRequired"></select>',
+        templateUrl: 'templates/countryTimezonePickerTimezone.directive.html',
         restrict: 'E',
-        replace: true,
         scope: {
             selectedCountry: '=countryModel',
             selectedValue: '=timezoneModel',

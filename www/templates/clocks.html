@@ -9,14 +9,16 @@
         <country-timezone-picker-countries 
           country-model="countryModel" 
           class="subflexify-item form-control input-lg"></country-timezone-picker-countries>
+
         <country-timezone-picker-timezone 
-          country-model="countryModel" 
+          country-model="countryModel.code" 
           timezone-model="timezoneModel" 
           class="subflexify-item form-control input-lg"></country-timezone-picker-timezone>
+
         <input type="number" ng-model="startTime">
         <input type="number" ng-model="endTime">
         <i 
-          ng-click="vm.addTimezone(timezoneModel, startTime, endTime)" 
+          ng-click="vm.addTimezone(timezoneModel.name, startTime, endTime)" 
           class="subflexify-item ion-ios-plus-outline big-plus"></i>
 
       </div>
