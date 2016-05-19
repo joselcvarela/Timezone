@@ -8,17 +8,18 @@
 
         <country-timezone-picker-countries 
           country-model="countryModel" 
-          class="subflexify-item form-control input-lg"></country-timezone-picker-countries>
+          class="subflexify-item form-control fullwidth input-lg"></country-timezone-picker-countries>
 
         <country-timezone-picker-timezone 
           country-model="countryModel.code" 
           timezone-model="timezoneModel" 
-          class="subflexify-item form-control input-lg"></country-timezone-picker-timezone>
+          class="subflexify-item form-control fullwidth input-lg"></country-timezone-picker-timezone>
+        
+        <hr>
 
-        <input type="number" ng-model="startTime">
-        <input type="number" ng-model="endTime">
+        <rzslider rz-slider-model="slider.startTime" rz-slider-high="slider.endTime" rz-slider-options="slider.options"></rzslider>
         <i 
-          ng-click="vm.addTimezone(timezoneModel.name, startTime, endTime)" 
+          ng-click="vm.addTimezone(timezoneModel.name, slider.startTime, slider.endTime)" 
           class="subflexify-item ion-ios-plus-outline big-plus"></i>
 
       </div>

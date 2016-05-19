@@ -3,11 +3,13 @@ angular.module('starter.controllers', [])
 .controller('cardTimezoneCtrl', function($scope) {
 })
 
-.controller('timezoneWrapperCtrl', function($scope) {
+.controller('timezoneWrapperCtrl', function($scope, $location, MyTimezones) {
   const vm = this;
   vm.setClass = setClass;
   vm.today = new Date();
   vm.hours = hours;
+
+  $location.hash('anc'+vm.today.getHours());
 
   function setClass(state, index){
     let cssClass = ['bar'];
@@ -29,7 +31,9 @@ angular.module('starter.controllers', [])
   }
 
   function hours(idx, offset){
-    return idx + (vm.today.getTimezoneOffset() / 60) + offset;
+    offset += vm.today.getTimezoneOffset()/60;
+    let hour = MyTimezones.calculate(offset, idx);
+    return hour + '-' + (hour+1); //idx + (vm.today.getTimezoneOffset() / 60) + offset;
   }
 
 })
@@ -49,6 +53,15 @@ angular.module('starter.controllers', [])
 
   $scope.startTime = 9;
   $scope.endTime = 18;
+  $scope.slider = {
+    startTime: 9,
+    endTime: 18,
+    options: {
+      floor: 0,
+      ceil: 23,
+      step: 0.5
+    }
+  }
 
 
   vm.allClocks = function() {

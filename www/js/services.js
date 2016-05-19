@@ -6,13 +6,13 @@
 
   vm.mytz = [];
   vm.offsets = [];
+  vm.initOffset = (new Date().getTimezoneOffset()) / 60;
 
   vm.url = '/data/timezones.json';
 
   $http.get(vm.url).then(function (resp) {
       vm.offsets = resp.data;
       vm.init();
-      vm.getRegionTimezone(5);
   }, function(err){
     console.log(err);
   });
@@ -25,17 +25,15 @@
         }
       }
     }
-
   }
 
   vm.init = function() {
-    let initOffset = (new Date().getTimezoneOffset()) / 60;
-    let initRegion = vm.getRegionTimezone(initOffset);
+    let initRegion = vm.getRegionTimezone(vm.initOffset);
     let initTz = {
       timezone: initRegion,
       end: 18,
       start: 9,
-      offset: initOffset
+      offset: vm.initOffset
     };
     vm.add(initTz);
   }
@@ -53,7 +51,9 @@
   }
 
   vm.orderStates = function(states, offset) {
+    offset += vm.initOffset;
     var ordStates = [];
+    debugger;
     for (let i = 0; i <= 23; i++) {
       ordStates[vm.calculate(offset,i)] =  states[i];
     }

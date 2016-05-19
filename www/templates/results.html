@@ -1,5 +1,5 @@
 <ion-view view-title="Results">
-  <ion-content ng-repeat="tz in vm.timezones" ng-style="{width: vm.divisor + '%', left: $index * vm.divisor + '%'}">
-      <timezone-wrapper actual="tz"></timezone-wrapper>
+  <ion-content>
+      <timezone-wrapper class="float-left" ng-repeat="tz in vm.timezones" ng-style="{width: vm.divisor + '%', left: $index * vm.divisor + '%'}" actual="tz" divisor="vm.divisor" index="$index"></timezone-wrapper>
   </ion-content>
 </ion-view>

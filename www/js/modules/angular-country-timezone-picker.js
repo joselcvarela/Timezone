@@ -33,8 +33,9 @@ angular.module('country.timezone.picker', [])
             scope.$watch('selectedCountry', function(country) {
                
                 scope.timezones = countryTimezonePickerService.countryTimezones(country); 
+                scope.selectedValue = undefined;
                 
-                if (scope.selectedValue && scope.timezones.length > 0 
+                if (scope.selectedValue && typeof(scope.selectedValue) == 'Array' && scope.timezones.length > 0 
                     && $filter('filter')(scope.selectedValue, { name: scope.selectedValue }).length === 0) {
                     scope.selectedValue = scope.timezones[0].name;
                 }

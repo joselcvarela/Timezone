@@ -15,7 +15,9 @@ angular.module('starter.directives', [])
 .directive('timezoneWrapper', function(MyTimezones){
   return {
     scope: {
-      actual: '='
+      actual: '=',
+      divisor: '=',
+      index: '='
     },
     templateUrl: 'templates/timezoneWrapper.directive.html',
     controller: 'timezoneWrapperCtrl',

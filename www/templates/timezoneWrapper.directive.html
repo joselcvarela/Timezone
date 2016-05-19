@@ -1,8 +1,8 @@
-<div class="bar bar-header bar-dark">
-  <h1 class="title">{{actual.timezone}}</h1>
-</div>
+  <div class="relative bar bar-dark">
+    <h1 class="title">{{actual.timezone}}</h1>
+  </div>
 <ion-list>
   <ion-item ng-repeat="state in actual.states track by $index" ng-class="vm.setClass(state, $index)">
-    {{vm.hours($index, actual.offset)}}
+    <a name="anc{{$index}}"><center>{{vm.hours($index, actual.offset)}}</center></a>
   </ion-item>
 </ion-list>
