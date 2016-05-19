@@ -66,23 +66,9 @@
 .subflexify-item {
 }
 
-
-.unavailable {
-  background-color: rgba(255, 0, 0, 0.5);
+.activeHour a center{
+  color: pink;
 }
-
-.overtime {
-  background-color: rgba(0, 0, 255, 0.5);
-}
-
-.available {
-  background-color: rgba(0, 255, 0, 0.5);
-}
-
-.activeHour{
-  border-top: 5px solid white !important;
-}
-
 
 
 

@@ -3,11 +3,12 @@ angular.module('starter.controllers', [])
 .controller('cardTimezoneCtrl', function($scope) {
 })
 
-.controller('timezoneWrapperCtrl', function($scope, $location, MyTimezones) {
+.controller('timezoneWrapperCtrl', function($window, $scope, $location, MyTimezones) {
   const vm = this;
   vm.setClass = setClass;
   vm.today = new Date();
-  vm.hours = hours;
+  //vm.hours = hours;
+
 
   $location.hash('anc'+vm.today.getHours());
 
@@ -33,13 +34,16 @@ angular.module('starter.controllers', [])
   function hours(idx, offset){
     offset += vm.today.getTimezoneOffset()/60;
     let hour = MyTimezones.calculate(offset, idx);
-    return hour + '-' + (hour+1); //idx + (vm.today.getTimezoneOffset() / 60) + offset;
+    let minutes = (hour % 1) * 60;
+    hour = (Math.floor(hour));
+    return hour + ':' + minutes + ' - ' + (hour+1) + ':' +minutes; //idx + (vm.today.getTimezoneOffset() / 60) + offset;
   }
 
 })
 
 .controller('ResultsCtrl', function($rootScope, $scope, MyTimezones) {
   const vm = this;
+
   vm.timezones = MyTimezones.all();
   vm.divisor = 100 / vm.timezones.length;
   $rootScope.$on('tzAddedEv', function(ev, data){
