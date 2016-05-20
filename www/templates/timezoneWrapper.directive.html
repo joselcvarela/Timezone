@@ -1,0 +1,7 @@
+<ion-list>
+  <ion-item ng-repeat="state in actual.states track by $index" ng-class="vm.setClass(state.availability, $index)">
+    <a name="anc{{state.hour}}"><center>{{state.formattedHour}}</center></a>
+  </ion-item>
+</ion-list>
+
+

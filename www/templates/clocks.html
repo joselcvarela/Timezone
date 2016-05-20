@@ -1,0 +1,28 @@
+<ion-view>
+  <ion-content class="padding">
+    <div class="flexify">
+      
+      <card-timezone class="card two-col float-left flexify-item" ng-repeat="clock in vm.allClocks()" timezone="clock.timezone" offset="clock.offset"></card-timezone>
+
+      <div class="card two-col add-clock flexify-item subflexify">
+
+        <country-timezone-picker-countries 
+          country-model="countryModel" 
+          class="subflexify-item form-control fullwidth input-lg"></country-timezone-picker-countries>
+
+        <country-timezone-picker-timezone 
+          country-model="countryModel.code" 
+          timezone-model="timezoneModel" 
+          class="subflexify-item form-control fullwidth input-lg"></country-timezone-picker-timezone>
+        
+        <hr>
+
+        <rzslider rz-slider-model="slider.startTime" rz-slider-high="slider.endTime" rz-slider-options="slider.options"></rzslider>
+        <i 
+          ng-click="vm.addTimezone(timezoneModel.name, slider.startTime, slider.endTime)" 
+          class="subflexify-item ion-ios-plus-outline big-plus"></i>
+
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
